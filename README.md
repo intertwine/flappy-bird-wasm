@@ -2,6 +2,10 @@
 
 A WebAssembly implementation of the classic Flappy Bird game, built with Rust and compiled to WebAssembly. This version features progressive difficulty that increases as you play, making it both accessible to beginners and challenging for experienced players.
 
+## Play the Game
+
+[Click here to play the game!](https://intertwine.github.io/flappy-bird-wasm/)
+
 ## 🎮 Gameplay
 
 ### Controls
