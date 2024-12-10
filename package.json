@@ -1,0 +1,16 @@
+{
+  "name": "flappy-bird-wasm",
+  "type": "module",
+  "description": "A Flappy Bird clone implemented in Rust and WebAssembly",
+  "version": "0.1.0",
+  "files": [
+    "flappy_bird_wasm_bg.wasm",
+    "flappy_bird_wasm.js",
+    "flappy_bird_wasm.d.ts"
+  ],
+  "main": "flappy_bird_wasm.js",
+  "types": "flappy_bird_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
