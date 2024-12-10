@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird WASM</title>
+    <style>
+        canvas {
+            border: 2px solid black;
+            margin: 0 auto;
+            display: block;
+        }
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        .instructions {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        #startBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #pauseBtn {
+            background-color: #FFC107;
+            color: black;
+        }
+        #quitBtn {
+            background-color: #f44336;
+            color: white;
+        }
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flappy Bird WASM</h1>
+    <div class="instructions">
+        <p>Controls:</p>
+        <p>SPACE / Click - Flap</p>
+        <p>P - Pause</p>
+        <p>ESC - Quit to Menu</p>
+    </div>
+    <div class="controls">
+        <button id="startBtn">Start</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="quitBtn">Quit</button>
+    </div>
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <div id="loading">Loading game assets...</div>
+    <script type="module">
+        import init, { Game, GameState } from './pkg/flappy_bird_wasm.js';
+
+        async function run() {
+            await init();
+            
+            const canvas = document.getElementById('canvas');
+            const loading = document.getElementById('loading');
+            const game = new Game(canvas);
+            
+            // Show loading screen
+            loading.style.display = 'block';
+            
+            // Load game assets
+            try {
+                await game.load_assets();
+                loading.style.display = 'none';
+            } catch (error) {
+                console.error('Failed to load game assets:', error);
+                loading.textContent = 'Failed to load game assets. Please refresh.';
+                return;
+            }
+            
+            const startBtn = document.getElementById('startBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const quitBtn = document.getElementById('quitBtn');
+            
+            // Handle keyboard input
+            document.addEventListener('keydown', (event) => {
+                switch(event.code) {
+                    case 'Space':
+                        if (game.get_state() === GameState.Playing) {
+                            game.flap();
+                        } else {
+                            game.start_game();
+                        }
+                        break;
+                    case 'KeyP':
+                        game.toggle_pause();
+                        break;
+                    case 'Escape':
+                        game.quit_game();
+                        break;
+                }
+            });
+            
+            // Handle button clicks
+            startBtn.addEventListener('click', () => game.start_game());
+            pauseBtn.addEventListener('click', () => game.toggle_pause());
+            quitBtn.addEventListener('click', () => game.quit_game());
+            
+            // Handle canvas clicks for flapping
+            canvas.addEventListener('click', () => {
+                if (game.get_state() === GameState.Playing) {
+                    game.flap();
+                }
+            });
+            
+            // Game loop
+            function gameLoop() {
+                game.update();
+                game.render();
+                requestAnimationFrame(gameLoop);
+            }
+            
+            gameLoop();
+        }
+
+        run().catch(console.error);
+    </script>
+</body>
+</html>
