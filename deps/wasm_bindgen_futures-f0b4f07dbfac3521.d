@@ -1,0 +1,9 @@
+/Users/bryanyoung/CascadeProjects/flappy-bird-wasm/target/wasm32-unknown-unknown/release/deps/libwasm_bindgen_futures-f0b4f07dbfac3521.rmeta: /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/lib.rs /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/queue.rs /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/task/singlethread.rs
+
+/Users/bryanyoung/CascadeProjects/flappy-bird-wasm/target/wasm32-unknown-unknown/release/deps/libwasm_bindgen_futures-f0b4f07dbfac3521.rlib: /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/lib.rs /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/queue.rs /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/task/singlethread.rs
+
+/Users/bryanyoung/CascadeProjects/flappy-bird-wasm/target/wasm32-unknown-unknown/release/deps/wasm_bindgen_futures-f0b4f07dbfac3521.d: /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/lib.rs /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/queue.rs /Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/task/singlethread.rs
+
+/Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/lib.rs:
+/Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/queue.rs:
+/Users/bryanyoung/.cargo/registry/src/index.crates.io-6f17d22bba15001f/wasm-bindgen-futures-0.4.49/src/task/singlethread.rs:
