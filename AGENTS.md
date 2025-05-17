@@ -4,12 +4,12 @@ Follow these rules when modifying this repository.
 
 ## Formatting
 
-* Use `cargo fmt` before committing if `rustfmt` is installed.
-* Keep Rust code compatible with edition 2021.
+- Use `cargo fmt` before committing if `rustfmt` is installed.
+- Keep Rust code compatible with edition 2021.
 
 ## Testing
 
-* Run integration tests with:
+- Run integration tests with:
 
   ```bash
   # Using npm
@@ -24,18 +24,19 @@ Follow these rules when modifying this repository.
 
   Tests are located in the `tests/` directory and rely on `wasm-bindgen-test`.
 
-* **Browser-Based Tests**: Tests are configured to run in a browser environment using `wasm_bindgen_test_configure!(run_in_browser);`. To run tests:
+- **Browser-Based Tests**: Tests are configured to run in a browser environment using `wasm_bindgen_test_configure!(run_in_browser);`. To run tests:
+
   - **Firefox**: Use `npm run test:firefox` or `wasm-pack test --headless --firefox`.
   - **Chrome**: Use `npm run test:chrome` or `wasm-pack test --headless --chrome`.
   - **Node.js**: Use `npm run test:node` or `wasm-pack test --node`.
 
-* **Test Configuration**: The crate is configured with both `cdylib` and `rlib` crate types to support integration tests. Test-specific methods (e.g., `new_headless` and `set_score`) are made available for testing but hidden from public documentation.
+- **Test Configuration**: The crate is configured with both `cdylib` and `rlib` crate types to support integration tests. Test-specific methods (e.g., `new_headless` and `set_score`) are made available for testing but hidden from public documentation.
 
-* Add or update tests when changing functionality.
+- Add or update tests when changing functionality.
 
 ## Building
 
-* Install dependencies:
+- Install dependencies:
 
   ```bash
   # Install Rust dependencies
@@ -51,7 +52,7 @@ Follow these rules when modifying this repository.
   npm run download-assets
   ```
 
-* Build the WebAssembly package with:
+- Build the WebAssembly package with:
 
   ```bash
   # Using npm
@@ -61,7 +62,7 @@ Follow these rules when modifying this repository.
   wasm-pack build --target web
   ```
 
-* For a local development server run:
+- For a local development server run:
 
   ```bash
   # Using npm
@@ -73,10 +74,10 @@ Follow these rules when modifying this repository.
 
 ## Commit Messages
 
-* Write concise commit messages in present tense.
-* Summaries should stay under 72 characters.
+- Write concise commit messages in present tense.
+- Summaries should stay under 72 characters.
 
 ## Documentation
 
-* Update `README.md` when user-facing behavior or setup steps change.
-* Keep `package.json` scripts in sync with documentation.
+- Update `README.md` when user-facing behavior or setup steps change.
+- Keep `package.json` scripts in sync with documentation.
