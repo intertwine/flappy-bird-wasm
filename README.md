@@ -94,7 +94,7 @@ pub enum GameState {
   ```rust
   game_speed: Initial 1.5 → Max 3.0
   gravity: Initial 0.4 → Max 0.8
-  pipe_gap: Initial 200px → Min 100px
+  pipe_gap: Initial 200px → Min 150px
   ```
 
 ## 🚀 Development Setup
