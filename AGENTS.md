@@ -6,6 +6,18 @@ Follow these rules when modifying this repository.
 
 - Use `cargo fmt` before committing if `rustfmt` is installed.
 - Keep Rust code compatible with edition 2021.
+- Ensure `.gitignore` is properly configured and remove any tracked files that should be ignored:
+
+  ```bash
+  git rm --cached <file>
+
+  ```
+  
+  This is especially important for:
+  - `Cargo.lock` (for library projects)
+  - Build artifacts (`target/`, `pkg/`)
+  - Dependencies (`node_modules/`)
+  - System files (`.DS_Store`)
 
 ## Testing
 

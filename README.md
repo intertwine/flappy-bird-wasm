@@ -144,6 +144,21 @@ pub enum GameState {
 
 5. Open `http://localhost:8000` in your browser
 
+### Git Configuration
+
+The project uses `.gitignore` to exclude build artifacts and dependencies. If you've cloned the repository and find that some ignored files are still being tracked, you can remove them from Git's index (while keeping them locally) with:
+
+```bash
+git rm --cached <file>
+```
+
+Common files that might need this treatment:
+
+- `Cargo.lock` (for library projects)
+- `target/` directory
+- `pkg/` directory
+- `node_modules/` directory
+
 ### Project Structure
 
 ```text
