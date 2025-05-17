@@ -24,12 +24,14 @@ impl Sprites {
 
     async fn load_image(_name: &str, path: &str) -> Result<HtmlImageElement, JsValue> {
         let image = HtmlImageElement::new()?;
-        let promise = js_sys::Promise::new(&mut |resolve, reject| {
-            image.set_src(path);
-            image.set_onload(Some(&resolve));
-            image.set_onerror(Some(&reject));
-        });
-        JsFuture::from(promise).await?;
+        image.set_src(path);
+
+        // `decode` returns a promise that resolves when the image has finished
+        // loading. This avoids having to manually wire up onload/onerror
+        // handlers and ensures the future resolves only after the image is
+        // ready for use.
+        let decode_promise = image.decode()?;
+        JsFuture::from(decode_promise).await?;
         Ok(image)
     }
 
