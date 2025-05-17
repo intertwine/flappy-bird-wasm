@@ -18,6 +18,7 @@ A WebAssembly implementation of the classic Flappy Bird game, built with Rust an
 
 - The bird automatically falls due to gravity
 - Press SPACE or click to make the bird flap upward
+- Downward speed is capped so beginners can maintain control
 - Navigate through pipes to score points
 - Each point increases the difficulty by 5%
 - Game ends if the bird hits a pipe or the ground
