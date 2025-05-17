@@ -4,6 +4,10 @@ use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::JsFuture;
 use web_sys::{CanvasRenderingContext2d, HtmlCanvasElement, HtmlImageElement};
 
+// Tuning constants for a smoother beginner experience
+const MAX_FALL_SPEED: f64 = 12.0; // Prevent the bird from accelerating too fast
+const BASE_FLAP_STRENGTH: f64 = -8.0; // Baseline upward velocity on flap
+
 // Asset loading
 #[wasm_bindgen]
 extern "C" {
@@ -163,6 +167,9 @@ impl Game {
 
         // Update bird physics with dynamic gravity
         self.bird_velocity += self.get_current_gravity();
+        if self.bird_velocity > MAX_FALL_SPEED {
+            self.bird_velocity = MAX_FALL_SPEED;
+        }
         self.bird_y += self.bird_velocity;
 
         // Update pipes with dynamic speed
@@ -329,7 +336,7 @@ impl Game {
     pub fn flap(&mut self) {
         if self.state == GameState::Playing {
             // Adjust flap strength based on difficulty
-            let flap_strength = -8.0 - (self.get_difficulty_multiplier() - 1.0);
+            let flap_strength = BASE_FLAP_STRENGTH - (self.get_difficulty_multiplier() - 1.0);
             self.bird_velocity = flap_strength;
         }
     }
