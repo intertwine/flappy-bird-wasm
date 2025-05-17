@@ -77,12 +77,10 @@ Follow these rules when modifying this repository.
 - For a local development server run:
 
   ```bash
-  # Using npm
   npm start
-
-  # Or using Python directly
-  python3 -m http.server 8000
   ```
+
+  This will start a local development server using the `serve` package. The server will automatically open your default browser to the game.
 
 ## Commit Messages
 

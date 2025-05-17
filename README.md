@@ -104,7 +104,6 @@ pub enum GameState {
 - Rust (latest stable)
 - wasm-pack
 - Node.js and npm
-- Python 3 (for local development server)
 - Web browser with WebAssembly support
 
 ### Building
@@ -137,12 +136,11 @@ pub enum GameState {
    ```bash
    # Using npm
    npm start
-
-   # Or using Python directly
-   python3 -m http.server 8000
    ```
 
-5. Open `http://localhost:8000` in your browser
+   This will start a local development server using the `serve` package. The server will automatically open your default browser to the game.
+
+5. If the browser doesn't open automatically, navigate to the URL shown in the terminal (typically `http://localhost:3000`)
 
 ### Git Configuration
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "wasm-pack build --target web",
-    "start": "python3 -m http.server 8000",
+    "start": "serve",
     "test": "wasm-pack test --headless --chrome",
     "test:firefox": "wasm-pack test --headless --firefox",
     "test:chrome": "wasm-pack test --headless --chrome",
