@@ -1,0 +1,28 @@
+{
+  "name": "flappy-bird-wasm",
+  "version": "0.1.0",
+  "description": "A Flappy Bird clone implemented in Rust and WebAssembly",
+  "main": "index.js",
+  "scripts": {
+    "build": "wasm-pack build --target web",
+    "start": "python3 -m http.server 8000",
+    "test": "wasm-pack test --headless --chrome",
+    "test:firefox": "wasm-pack test --headless --firefox",
+    "test:chrome": "wasm-pack test --headless --chrome",
+    "test:node": "wasm-pack test --node",
+    "download-assets": "chmod +x scripts/download_assets.sh && ./scripts/download_assets.sh",
+    "postinstall": "npm run download-assets"
+  },
+  "keywords": [
+    "rust",
+    "wasm",
+    "game",
+    "flappy-bird",
+    "webassembly"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+} 

@@ -34,7 +34,7 @@ impl Sprites {
         // loading. This avoids having to manually wire up onload/onerror
         // handlers and ensures the future resolves only after the image is
         // ready for use.
-        let decode_promise = image.decode()?;
+        let decode_promise = image.decode();
         JsFuture::from(decode_promise).await?;
         Ok(image)
     }
@@ -149,7 +149,8 @@ impl Game {
     }
 
     /// Create a `Game` instance for tests without requiring an existing canvas.
-    #[cfg(test)]
+    #[cfg(target_arch = "wasm32")]
+    #[doc(hidden)]
     pub fn new_headless() -> Result<Game, JsValue> {
         let window = web_sys::window().expect("no window");
         let document = window.document().expect("no document");
@@ -388,7 +389,7 @@ impl Game {
         self.gravity = 0.4;
     }
 
-    #[cfg(test)]
+    #[doc(hidden)]
     pub fn set_score(&mut self, score: u32) {
         self.score = score;
     }

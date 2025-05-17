@@ -103,6 +103,7 @@ pub enum GameState {
 
 - Rust (latest stable)
 - wasm-pack
+- Node.js and npm
 - Python 3 (for local development server)
 - Web browser with WebAssembly support
 
@@ -112,18 +113,32 @@ pub enum GameState {
 2. Install dependencies:
 
    ```bash
+   # Install Rust dependencies
    cargo build
+
+   # Install npm dependencies and download game assets
+   npm install
    ```
+
+   The `npm install` command will automatically download required game assets (sprites and images) to the `assets/` directory.
 
 3. Build WebAssembly:
 
    ```bash
+   # Using npm
+   npm run build
+
+   # Or using wasm-pack directly
    wasm-pack build --target web
    ```
 
 4. Start local server:
 
    ```bash
+   # Using npm
+   npm start
+
+   # Or using Python directly
    python3 -m http.server 8000
    ```
 
@@ -139,7 +154,10 @@ flappy-bird-wasm/
 │   ├── bird.png        # Bird sprite
 │   ├── pipe.png        # Pipe sprite
 │   └── background.png  # Background image
+├── scripts/
+│   └── download_assets.sh  # Asset download script
 ├── Cargo.toml          # Rust dependencies
+├── package.json        # npm dependencies and scripts
 ├── index.html          # Web entry point
 └── pkg/                # Compiled WebAssembly
 ```
@@ -160,15 +178,34 @@ flappy-bird-wasm/
 
 ## 🧪 Running Tests
 
-Integration tests are executed with `wasm-bindgen-test`. Ensure the
-`wasm32-unknown-unknown` target is installed and run:
+Integration tests are executed with `wasm-bindgen-test`. Ensure the `wasm32-unknown-unknown` target is installed and run:
 
 ```bash
+# Using npm
+npm test              # Run tests in Chrome
+npm run test:firefox  # Run tests in Firefox
+npm run test:chrome   # Run tests in Chrome
+npm run test:node     # Run tests in Node.js
+
+# Or using cargo directly
 cargo test --target wasm32-unknown-unknown -- --nocapture
 ```
 
-The included `tests/game_logic.rs` verifies that the game's difficulty
-multiplier never exceeds `2.0` as the score increases.
+The included `tests/game_logic.rs` verifies that the game's difficulty multiplier never exceeds `2.0` as the score increases.
+
+### Testing Approach
+
+- **Integration Tests**: Located in `tests/game_logic.rs`, these tests verify core game logic (e.g., difficulty scaling).
+- **Browser-Based Tests**: Tests are configured to run in a browser environment using `wasm_bindgen_test_configure!(run_in_browser);`.
+- **Running Tests**:
+  - **Firefox**: Use `npm run test:firefox` or `wasm-pack test --headless --firefox`.
+  - **Chrome**: Use `npm run test:chrome` or `wasm-pack test --headless --chrome`.
+  - **Node.js**: Use `npm run test:node` or `wasm-pack test --node`.
+
+### Test Configuration
+
+- The crate is configured with both `cdylib` and `rlib` crate types to support integration tests.
+- Test-specific methods (e.g., `new_headless` and `set_score`) are made available for testing but hidden from public documentation.
 
 ## 🎯 Future Improvements
 

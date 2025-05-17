@@ -1,1 +1,31 @@
-/target
+# Rust build artifacts
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# WASM build artifacts
+/pkg/
+/dist/
+/wasm-pack.log
+
+# Node.js dependencies
+/node_modules/
+package-lock.json
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Debug files
+*.pdb
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Test coverage
+/coverage/
