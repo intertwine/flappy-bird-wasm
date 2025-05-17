@@ -99,7 +99,7 @@ struct Pipe {
 
 impl Game {
     // Helper function to calculate difficulty multiplier based on score
-    fn get_difficulty_multiplier(&self) -> f64 {
+    pub fn get_difficulty_multiplier(&self) -> f64 {
         // Gradually increase difficulty up to a maximum
         let base_multiplier = 1.0 + (self.score as f64 * 0.05);
         base_multiplier.min(2.0) // Cap at 2x difficulty
@@ -146,6 +146,17 @@ impl Game {
             bird_frame: 0,
             frame_count: 0,
         })
+    }
+
+    /// Create a `Game` instance for tests without requiring an existing canvas.
+    #[cfg(test)]
+    pub fn new_headless() -> Result<Game, JsValue> {
+        let window = web_sys::window().expect("no window");
+        let document = window.document().expect("no document");
+        let canvas = document
+            .create_element("canvas")?
+            .dyn_into::<HtmlCanvasElement>()?;
+        Game::new(canvas)
     }
 
     pub async fn load_assets(&mut self) -> Result<(), JsValue> {
@@ -375,6 +386,11 @@ impl Game {
         // Reset to initial game speed and gravity
         self.game_speed = 1.5;
         self.gravity = 0.4;
+    }
+
+    #[cfg(test)]
+    pub fn set_score(&mut self, score: u32) {
+        self.score = score;
     }
 
     fn check_collisions(&mut self) {

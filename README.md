@@ -158,6 +158,18 @@ flappy-bird-wasm/
 - No external JavaScript libraries required
 - Pure WebAssembly and vanilla JavaScript implementation
 
+## 🧪 Running Tests
+
+Integration tests are executed with `wasm-bindgen-test`. Ensure the
+`wasm32-unknown-unknown` target is installed and run:
+
+```bash
+cargo test --target wasm32-unknown-unknown -- --nocapture
+```
+
+The included `tests/game_logic.rs` verifies that the game's difficulty
+multiplier never exceeds `2.0` as the score increases.
+
 ## 🎯 Future Improvements
 
 Planned features and enhancements:
