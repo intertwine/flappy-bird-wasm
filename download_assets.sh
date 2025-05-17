@@ -3,7 +3,7 @@
 # Create assets directory if it doesn't exist
 mkdir -p assets
 
-# Download bird sprite (3 frames)
+# Download bird sprite
 curl -o assets/bird.png "https://raw.githubusercontent.com/sourabhv/FlapPyBird/master/assets/sprites/yellowbird-midflap.png"
 
 # Download pipe sprite
