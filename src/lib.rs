@@ -378,8 +378,10 @@ impl Game {
     }
 
     fn check_collisions(&mut self) {
+        let bird_height = 15.0;
+
         // Check if bird hits the ground or ceiling
-        if self.bird_y <= 0.0 || self.bird_y >= 500.0 {
+        if self.bird_y <= 0.0 || self.bird_y + bird_height >= 500.0 {
             self.state = GameState::GameOver;
             return;
         }
@@ -389,7 +391,6 @@ impl Game {
             // Bird hitbox dimensions (more precise collision detection)
             let bird_x = 100.0;
             let bird_width = 25.0;  // Reduced from 30.0
-            let bird_height = 15.0; // Reduced from 20.0
             let bird_hitbox_x_offset = 5.0;  // Offset from the left/right edges
             let bird_hitbox_y_offset = 4.0;  // Offset from the top/bottom edges
 
